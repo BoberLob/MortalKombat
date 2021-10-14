@@ -46,11 +46,12 @@ function createPlayer(playerName,obj) {
 
     const arenas = document.querySelector('.arenas')
     arenas.appendChild($player)
-
+    playerName.attack()
 };
 
 createPlayer('player1', player1);
 createPlayer('player2', player2);
+
 
 // <div class="player1">
 //     <div class="progressbar">
