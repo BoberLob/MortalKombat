@@ -4,7 +4,7 @@ const player1 = {
     img : 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif',
     weapon: ['brain', 'look', 'voice'],
     function attack() {
-        console.log(this.name + "fight...");
+        console.log(this.name + " fight...");
     }
 }
 const player2 = {
@@ -13,7 +13,7 @@ const player2 = {
     img : 'http://reactmarathon-api.herokuapp.com/assets/sonya.gif',
     weapon: ['brain', 'look', 'voice'],
     function attack() {
-        console.log(name + "fight...");
+        console.log(name + " fight...");
     }
 }
 
