@@ -17,7 +17,7 @@ const player2 = {
     img : 'http://reactmarathon-api.herokuapp.com/assets/sonya.gif',
     weapon: ['brain', 'look', 'voice'],
     function attack() {
-        console.log(name + " fight...");
+        console.log(this.name + " fight...");
     }
 }
 
@@ -29,39 +29,32 @@ function createElem(tag, className) {
     return $tag;
 }
 
-function createPlayer(playerName,obj) {
-    const $player = document.createElement('div');
-    $player.classList.add(playerName);
-
-    const $progressbar = document.createElement('div');
-    $progressbar.classList.add('progressbar');
-
-    const $character = document.createElement('div');
-    $character.classList.add('character');
-
-    const $life = document.createElement('div');
-    $life.classList.add('life');
-    $life.style.width = obj.hr + "%";
-
-    const $name = document.createElement('div');
-    $name.classList.add('name');
-    $name.innerText = obj.name;
+function createPlayer(playerObj) {
     
-    const $img = document.createElement('img');
-    $img.src = obj.img;
+    const $player = createElem('div', 'player' + playerObj.player);
+    const $progressbar = createElem('div', 'progressbar');
+    const $character = createElem('div', 'character');
+    const $life = createElem('div', 'life');
+    const $name = createElem('div', 'name');
+    const $img = createElem('img');
+    
+    $life.style.width = playerObj.hr + "%";
+    $name.innerText = playerObj.name;
+    $img.src = playerObj.img;
 
     $player.appendChild($progressbar);
     $player.appendChild($character);
     $progressbar.appendChild($life);
     $progressbar.appendChild($name);
     $character.appendChild($img);
+    
    return $player;
 };
 
 
 
-arenas.appendChild(createPlayer('player1', player1))
-arenas.appendChild(createPlayer('player2', player2))
+arenas.appendChild(createPlayer(player1))
+arenas.appendChild(createPlayer(player2))
 
 // <div class="player1">
 //     <div class="progressbar">
