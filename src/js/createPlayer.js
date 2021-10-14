@@ -1,23 +1,5 @@
 import createElem from ('./createElem')
 
-class Player {
-    name;
-    hp;
-    img;
-    weapon;
-    constructor({ name, hp, img, weapon }) {
-        this.name = name;
-        this.hp = hp;
-        this.img = img;
-        this.weapon = weapon;
-    }
-
-    attack() {
-        console.log(this.name + 'Fight...');
-    }
-};
-
-
 export default function createPlayer(playerObj) {
     
     const $player = createElem('div', 'player' + playerObj.player);
