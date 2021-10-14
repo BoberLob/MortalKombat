@@ -1,3 +1,5 @@
+import createPlayer from ('.js/createPlayer')
+
 const $arenas = document.querySelector('.arenas');
 
 const player1 = {
