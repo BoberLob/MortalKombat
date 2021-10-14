@@ -41,7 +41,7 @@ body {
 .wall-left {
     position: absolute;
     width: 87px;
-    background: url(assets/wall-left.png);
+    background: url(img/wall-left.png);
     height: 100vh;
     background-size: contain;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@ body {
 .wall-right {
     position: absolute;
     width: 87px;
-    background: url(./assets/wall-right.png);
+    background: url(./img/wall-right.png);
     height: 100vh;
     background-size: contain;
     background-repeat: no-repeat;
@@ -75,23 +75,23 @@ body {
 }
 
 .arenas.arena1 {
-    background-image: url(./assets/scorpions-lair-arenas.png);
+    background-image: url(./img/scorpions-lair-arenas.png);
 }
 
 .arenas.arena2 {
-    background-image: url(./assets/the-cave.png);
+    background-image: url(./img/the-cave.png);
 }
 
 .arenas.arena3 {
-    background-image: url(./assets/jade-s-desert.png);
+    background-image: url(./img/jade-s-desert.png);
 }
 
 .arenas.arena4 {
-    background-image: url(./assets/scislac-busorez.png);
+    background-image: url(./img/scislac-busorez.png);
 }
 
 .arenas.arena5 {
-    background-image: url(./assets/waterfront.png);
+    background-image: url(./img/waterfront.png);
 }
 
 .player1,
@@ -169,7 +169,7 @@ body {
 .chat {
     width: 786px;
     height: 30vh;
-    background: url(./assets/versus.png);
+    background: url(./img/versus.png);
     background-size: cover;
     background-position: center;
     border-top: 4px solid #f5d100;
