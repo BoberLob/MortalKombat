@@ -1,3 +1,22 @@
+import createElem from ('./createElem')
+
+class Player {
+    name;
+    hp;
+    img;
+    weapon;
+    constructor({ name, hp, img, weapon }) {
+        this.name = name;
+        this.hp = hp;
+        this.img = img;
+        this.weapon = weapon;
+    }
+
+    attack() {
+        console.log(this.name + 'Fight...');
+    }
+};
+
 
 export default function createPlayer(playerObj) {
     
@@ -20,11 +39,3 @@ export default function createPlayer(playerObj) {
     
    return $player;
 };
-
-function createElem(tag, className) {
-    const $tag = document.createElement(tag);
-    if (className) {
-        $tag.classList.add(className);
-    }
-    return $tag;
-}
