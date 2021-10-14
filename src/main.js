@@ -1,4 +1,21 @@
-
+const player1 = {
+    name: 'Kitana',
+    hp : 100,
+    img : 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif',
+    weapon: ['brain', 'look', 'voice'],
+    function attack() {
+        console.log(this.name + "fight...");
+    }
+}
+const player2 = {
+    name: 'Sonya',
+    hp : 100,
+    img : 'http://reactmarathon-api.herokuapp.com/assets/sonya.gif',
+    weapon: ['brain', 'look', 'voice'],
+    function attack() {
+        console.log(name + "fight...");
+    }
+}
 <div class="player1">
     <div class="progressbar">
         <div class="life"></div>
