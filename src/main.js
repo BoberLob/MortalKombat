@@ -1,5 +1,6 @@
-import createPlayer from '.js/createPlayer'
-import Player from '.js/Player'
+import createPlayer from './js/createPlayer'
+import Player from './js/Player'
+import gamers from './assets/db.json'
 
 const $arenas = document.querySelector('.arenas');
 
