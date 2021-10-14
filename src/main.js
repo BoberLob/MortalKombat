@@ -24,6 +24,8 @@ const player2 = {
         console.log(this.name + " fight...");
     }
 }
+const player1 = new Player(gamers[0]);
+const player2 = new Player(gamers[4]);
 
 arenas.appendChild(createPlayer(player1))
 arenas.appendChild(createPlayer(player2))
