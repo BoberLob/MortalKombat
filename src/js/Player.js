@@ -2,7 +2,9 @@ export default class Player {
     name;
     hp;
     img;
-    weapon;
+    weapon; 
+    // увеличиваем счётчик при каждом вызове
+    this.count++;
     constructor({ name, hp, img, weapon }) {
         this.name = name;
         this.hp = hp;
@@ -13,4 +15,4 @@ export default class Player {
     attack() {
         console.log(this.name + 'Fight...');
     }
-};
+}
