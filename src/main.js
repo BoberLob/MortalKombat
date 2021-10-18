@@ -51,3 +51,7 @@ randomButton.addEventListener('click', () => {
 
 arenas.appendChild(createPlayer(player2))
 arenas.appendChild(createPlayer(player1))
+
+// 1. Функция changeHP должна в аргументах принимать, на какое кол-во надо изменять HP. И решать, нужно ли отнимать или ставить 0. Больше ничего эта функция не должна делать.
+// поменять параметр
+// убедиться, что функция в объекте (по this имеет доступ к инстансу)
