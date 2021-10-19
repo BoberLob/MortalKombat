@@ -1,12 +1,12 @@
 import createPlayer from './js/createPlayer'
 import Player from './js/Player'
-import gamers from './assets/db.json'
+import fighters from './assets/db.json'
 
 const $arenas = document.querySelector('.arenas');
 const randomButton = document.querySelector('.button');
 
-const player1 = new Player(gamers[0]);
-const player2 = new Player(gamers[4]);
+const player1 = new Player(fighters[0]);
+const player2 = new Player(fighters[4]);
 
 function playerWin(name) {
     const winTitle = createElem('div', 'loseTitle');
