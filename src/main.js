@@ -36,14 +36,16 @@ function gameOver() {
 
 function changePlayer(player) {
     const playerLife = document.querySelector(`.player${player.playerNumber} .life`);
-    player.hp -= Math.ceil(Math.random() * 20);
+    player.hp -= getRandom(20);
     playerLife.style.width = player.hp <= 0 ? `0%` : `${player.hp}%`;
     if (player.hp < 0) {
         gameOver();
     }
 
 }
-
+function getRandom(hp) {
+    return Math.ceil(Math.random() * hp)
+}
 randomButton.addEventListener('click', () => {
     changePlayer(player1);
     changePlayer(player2);
