@@ -1,6 +1,7 @@
-import createPlayer from './js/createPlayer'
 import Player from './js/Player'
 import fighters from './assets/db.json'
+import createPlayer from './js/createPlayer'
+import createElem from './js/createElem'
 
 const $arenas = document.querySelector('.arenas');
 const randomButton = document.querySelector('.button');
@@ -9,44 +10,57 @@ const player1 = new Player(fighters[0]);
 const player2 = new Player(fighters[4]);
 
 function playerWin(name) {
-    const winTitle = createElem('div', 'loseTitle');
-    winTitle.innerHTML = `${name} win!`;
-    return winTitle;
+    const $winTitle = createElem('div', 'loseTitle');
+    $winTitle.innerHTML = `${name} win!`;
+    return $winTitle;
 }
 
 function gameOver() {
     if (player1.hp < 0 && player2.hp > 0) {
         player1.hp = 0;
-        randomButton.disabled = true;
         arenas.appendChild(playerWin(player2.name));
     }
     if (player1.hp > 0 && player2.hp < 0) {
         player2.hp = 0;
-        randomButton.disabled = true;
         arenas.appendChild(playerWin(player1.name));
     }
     if (player1.hp < 0 && player2.hp < 0) {
         let nobody = 'Nobody wins!';
         player1.hp = 0;
         player2.hp = 0;
-        randomButton.disabled = true;
         arenas.appendChild(playerWin(nobody));
     }
 }
 
-function changePlayer(player) {
-    const playerLife = document.querySelector(`.player${player.playerNumber} .life`);
-    player.hp -= getRandom(20);
-    playerLife.style.width = player.hp <= 0 ? `0%` : `${player.hp}%`;
+function renderHP() {
+const $playerLife = document.querySelector(`.player${this.id} .life`);
+return $playerLife.style.width = `${this.hp}%`;
 }
+
+function changeHP(hp) {
+    this.hp -= getRandom(hp);
+    if (this.hp <= 0) this.hp = 0;
+    console.log(`###: ${this.name} = ${this.hp}%`)
+    return this.hp
+}
+
+// function changeHP(player) {
+//     const playerLife = document.querySelector(`.player${player.id} .life`);
+//     player.hp -= getRandom(20);
+//     playerLife.style.width = player.hp <= 0 ? `0%` : `${player.hp}%`;
+// }
 
 function getRandom(hp) {
     return Math.ceil(Math.random() * hp)
 }
+
 randomButton.addEventListener('click', () => {
-    changePlayer(player1);
-    changePlayer(player2);
-        if (player.hp < 0) {
+   let player1HP = changeHP.call(player1,20);
+    renderHP.call(player1)
+   let player2HP = changeHP.call(player2,20);
+    renderHP.call(player2)
+        if (player1HP ===0 ||player2HP ===0 ) {
+        randomButton.disabled = true;    
         gameOver();
     }
 });
