@@ -55,10 +55,13 @@ function getRandom(hp) {
 }
 
 randomButton.addEventListener('click', () => {
-   let player1HP = changeHP.call(player1,20);
-    renderHP.call(player1)
-   let player2HP = changeHP.call(player2,20);
-    renderHP.call(player2)
+   console.log("####: Click Random Button");
+    
+  let player1HP = changeHP.call(player1,20);
+       renderHP.call(player1)
+  let player2HP = changeHP.call(player2,20);
+       renderHP.call(player2)
+    
         if (player1HP ===0 ||player2HP ===0 ) {
         randomButton.disabled = true;    
         gameOver();
