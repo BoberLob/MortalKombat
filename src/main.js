@@ -1,47 +1,76 @@
-import createPlayer from './js/createPlayer'
 import Player from './js/Player'
-import gamers from './assets/db.json'
+import fighters from './assets/db.json'
+import createPlayer from './js/createPlayer'
+import createElem from './js/createElem'
 
 const $arenas = document.querySelector('.arenas');
+const randomButton = document.querySelector('.button');
 
-const player1 = new Player(gamers[0]);
-arenas.appendChild(createPlayer(player1))
+const player1 = new Player(fighters[0]);
+const player2 = new Player(fighters[4]);
+
+function playerWin(name) {
+    const $winTitle = createElem('div', 'loseTitle');
+    $winTitle.innerHTML = `${name} win!`;
+    return $winTitle;
+}
+
+function gameOver() {
+    if (player1.hp < 0 && player2.hp > 0) {
+        player1.hp = 0;
+        arenas.appendChild(playerWin(player2.name));
+    }
+    if (player1.hp > 0 && player2.hp < 0) {
+        player2.hp = 0;
+        arenas.appendChild(playerWin(player1.name));
+    }
+    if (player1.hp < 0 && player2.hp < 0) {
+        let nobody = 'Nobody wins!';
+        player1.hp = 0;
+        player2.hp = 0;
+        arenas.appendChild(playerWin(nobody));
+    }
+}
+
+function renderHP() {
+const $playerLife = document.querySelector(`.player${this.id} .life`);
+return $playerLife.style.width = `${this.hp}%`;
+}
+
+function changeHP(hp) {
+    this.hp -= getRandom(hp);
+    if (this.hp <= 0) this.hp = 0;
+    console.log(`###: ${this.name} = ${this.hp}%`)
+    return this.hp
+}
+
+// function changeHP(player) {
+//     const playerLife = document.querySelector(`.player${player.id} .life`);
+//     player.hp -= getRandom(20);
+//     playerLife.style.width = player.hp <= 0 ? `0%` : `${player.hp}%`;
+// }
+
+function getRandom(hp) {
+    return Math.ceil(Math.random() * hp)
+}
+
+randomButton.addEventListener('click', () => {
+   console.log("####: Click Random Button");
+    
+  let player1HP = changeHP.call(player1,20);
+       renderHP.call(player1)
+  let player2HP = changeHP.call(player2,20);
+       renderHP.call(player2)
+    
+        if (player1HP ===0 ||player2HP ===0 ) {
+        randomButton.disabled = true;    
+        gameOver();
+    }
+});
 
 arenas.appendChild(createPlayer(player2))
-const player2 = new Player(gamers[4]);
+arenas.appendChild(createPlayer(player1))
 
-
-// const player1 = {
-//     player: 1,
-//     name: 'Kitana',
-//     hp : 100,
-//     img : 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif',
-//     weapon: ['brain', 'look', 'voice'],
-//     function attack() {
-//         console.log(this.name + " fight...");
-//     }
-// }
-// const player2 = {
-//     player: 2,
-//     name: 'Sonya',
-//     hp : 100,
-//     img : 'http://reactmarathon-api.herokuapp.com/assets/sonya.gif',
-//     weapon: ['brain', 'look', 'voice'],
-//     function attack() {
-//         console.log(this.name + " fight...");
-//     }
-// }
-// <div class="player1">
-//     <div class="progressbar">
-//         <div class="life"></div>
-//         <div class="name">SCORPION</div>
-//     </div>
-//     <div class="character">
-//         <img src="http://reactmarathon-api.herokuapp.com/assets/scorpion.gif" />
-//     </div>
-// </div>
-// http://reactmarathon-api.herokuapp.com/assets/kitana.gif
-// http://reactmarathon-api.herokuapp.com/assets/subzero.gif
-// http://reactmarathon-api.herokuapp.com/assets/sonya.gif
-// http://reactmarathon-api.herokuapp.com/assets/liukang.gif
-// http://reactmarathon-api.herokuapp.com/assets/scorpion.gif
+// 1. Функция changeHP должна в аргументах принимать, на какое кол-во надо изменять HP. И решать, нужно ли отнимать или ставить 0. Больше ничего эта функция не должна делать.
+// поменять параметр
+// убедиться, что функция в объекте (по this имеет доступ к инстансу)
