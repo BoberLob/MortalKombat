@@ -44,10 +44,22 @@ randomButton.addEventListener('click', () => {
 
   if (player1HP === 0 || player2HP === 0) {
     randomButton.disabled = true;
+    const reloadButton= createReloadButton()
+    reloadButton.addEventListener('click', function() {
+      window.location.reload()
+    })
+    arenas.appendChild(reloadButton)
     gameOver();
   }
 });
 
+function createReloadButton(){
+  const reloadWrap=createElement('div', 'reloadWrap')
+    const reloadButton=createElement('button', 'button')
+      reloadButton.innerHTML='Restart'
+      reloadWrap.appendChild(reloadButton)
+return reloadWrap
+}
 arenas.appendChild(createPlayer(player2));
 arenas.appendChild(createPlayer(player1));
 

@@ -176,7 +176,7 @@ body {
 .chat {
   width: 786px;
   height: 30vh;
-  background: url(./img/versus.png);
+  background-image: url(./img/versus.png);
   background-size: cover;
   background-position: center;
   border-top: 4px solid #f5d100;
