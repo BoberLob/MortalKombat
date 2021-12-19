@@ -4,11 +4,8 @@ export default class Player {
     hp;
     img;
     weapon;
-    count;
-    
-    
-    constructor({id, name, hp, img, weapon, player}) {
-        // увеличиваем счётчик при каждом вызове
+
+    constructor({ id, name, hp, img, weapon }) {
         this.id = id;
         this.name = name;
         this.hp = hp;
@@ -16,7 +13,28 @@ export default class Player {
         this.weapon = weapon;
     }
 
+    elHP() {
+        return document.querySelector(`.player${this.id} .life`);
+    }
+
     attack() {
         console.log(this.name + 'Fight...');
     }
+
+    renderHP() {
+        return this.elHP().style.width = `${this.hp}%`;
+    }
+
+// Функция changeHP должна в аргументах принимать, на какое кол-во надо изменять HP.
+// И решать, нужно ли отнимать или ставить 0. Больше ничего эта функция не должна делать.
+// поменять параметр и убедиться, что функция в объекте (по this имеет доступ к инстансу)
+    changeHP(damage) {
+        this.hp -= damage;
+        if (this.hp <= 0) this.hp = 0;
+        console.log(`###: ${this.name} = ${this.hp}%`);
+        return this.hp;
+    }
+
+
 }
+
