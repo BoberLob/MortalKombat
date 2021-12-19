@@ -1,13 +1,16 @@
 /* ---MK - JSMarathon --- */
-
+:root {
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --main-font: "Mortal Kombat 3",sans-serif;
+}
 @font-face {
   font-family: "Mortal Kombat 3";
-  src: url("./img/fonts/MortalKombat3-Regular.eot");
-  src: url("./img/fonts/MortalKombat3-Regular.eot?#iefix")
+  src: url("./assets/fonts/MortalKombat3-Regular.eot");
+  src: url("./assets/fonts/MortalKombat3-Regular.eot?#iefix")
       format("embedded-opentype"),
-    url("./img/fonts/MortalKombat3-Regular.woff2") format("woff2"),
-    url("./img/fonts/MortalKombat3-Regular.woff") format("woff"),
-    url("./img/fonts/MortalKombat3-Regular.ttf") format("truetype");
+    url("./assets/fonts/MortalKombat3-Regular.woff2") format("woff2"),
+    url("./assets/fonts/MortalKombat3-Regular.woff") format("woff"),
+    url("./assets/fonts/MortalKombat3-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -28,6 +31,7 @@ body {
   background-color: #424542;
   margin: 0;
   padding: 0;
+  font-family: var(--main-font);
 }
 
 .root {
@@ -43,7 +47,7 @@ body {
 .wall-left {
     position: absolute;
     width: 87px;
-    background: url(assets/wall-left.png);
+    background-image: url(img/wall-left.png);
     height: 100vh;
     background-size: contain;
     background-repeat: no-repeat;
@@ -56,7 +60,7 @@ body {
 .wall-right {
     position: absolute;
     width: 87px;
-    background: url(./assets/wall-right.png);
+    background-image: url(./img/wall-right.png);
     height: 100vh;
     background-size: contain;
     background-repeat: no-repeat;
@@ -152,7 +156,7 @@ body {
 
 .name {
   position: absolute;
-  font-family: "Mortal Kombat 3";
+  font-family: var(--main-font);
   font-size: 23px;
   line-height: 20px;
   letter-spacing: 2px;
@@ -240,7 +244,7 @@ body {
   border-radius: 4px;
   box-sizing: border-box;
   cursor: pointer;
-  font-family: "Mortal Kombat 3";
+  font-family: var(--main-font);
   outline: none;
 }
 .button::after {
@@ -271,7 +275,7 @@ body {
   text-transform: uppercase;
   z-index: 1000;
   color: white;
-  font-family: "Mortal Kombat 3";
+  font-family: var(--main-font);
 }
 
 .lkt {
@@ -284,12 +288,10 @@ body {
   text-transform: uppercase;
   z-index: 1000;
   color: white;
-  font-family: "Mortal Kombat 3";
+  font-family: var(--main-font);
 }
 .fade {
   -webkit-animation: fade 2s;
-  -moz-animation: fade 2s;
-  -moz-animation: fade 2s;
   -moz-animation: fade 2s;
   -o-animation: fade 2s;
   animation: fade 2s linear infinite;
