@@ -20,7 +20,7 @@ export default class Player {
     attack() {
         console.log(this.name + 'Fight...');
     }
-
+    // Третья функци renderHP должна только рендерить hp, т.е. рисовать hp при помощи style.width.
     renderHP() {
         return this.elHP().style.width = `${this.hp}%`;
     }
