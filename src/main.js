@@ -1,9 +1,9 @@
-import Player from './js/Player';
-import createPlayer from './js/createPlayer';
-import createElement from './js/createElement';
+import Player from './Player.js';
+import createPlayer from './js/createPlayer.js';
+import createElement from './js/createElement.js';
 
-import { playerAttack, enemyAttack } from './js/attack';
-import generateLogs from './js/generateLogs';
+import { playerAttack, enemyAttack } from './js/attack.js';
+import generateLogs from './js/generateLogs.js';
 
 import fighters from './assets/db.json';
 
