@@ -1,23 +1,20 @@
 import createElement from './createElement'
 
-export default function createPlayer(fighters) {
+export default function createPlayer({ id, hp, name, img}) {
 
-    const player = createElement('div', 'player' + fighters.id);
-    const progressbar = createElement('div', 'progressbar');
-    const character = createElement('div', 'character');
-    const life = createElement('div', 'life');
-    const name = createElement('div', 'name');
-    const img = createElement('img');
-    
-    life.style.width = fighters.hp + "%";
-    name.innerText = fighters.name;
-    img.src = fighters.img;
+    const player = createElement('div', 'player' + id);
+    const lifeEl = createElement('div', 'life');
+    const nameEl = createElement('div', 'name', name);
+    const imgEl = createElement('img');
+
+    lifeEl.style.width = hp + "%";
+    imgEl.src = img;
+
+    const progressbar = createElement('div', 'progressbar',[lifeEl, nameEl]);
+    const character = createElement('div', 'character', [imgEl]);
 
     player.appendChild(progressbar);
     player.appendChild(character);
-    progressbar.appendChild(life);
-    progressbar.appendChild(name);
-    character.appendChild(img);
     
    return player;
 };

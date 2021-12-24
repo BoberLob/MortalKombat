@@ -1,3 +1,4 @@
+
 export default class Player {
     id;
     name;
@@ -17,9 +18,6 @@ export default class Player {
         return document.querySelector(`.player${this.id} .life`);
     }
 
-    attack() {
-        console.log(this.name + 'Fight...');
-    }
     // Третья функци renderHP должна только рендерить hp, т.е. рисовать hp при помощи style.width.
     renderHP() {
         return this.elHP().style.width = `${this.hp}%`;
