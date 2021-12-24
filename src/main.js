@@ -1,14 +1,17 @@
-import createPlayer from './js/createPlayer'
-import Player from './js/Player'
-import gamers from './assets/db.json'
+import createPlayer from './js/createPlayer.js';
+import Player from './js/Player.js';
+import gamers from './assets/db.json';
 
-const $arenas = document.querySelector('.arenas');
-
+const arenas = document.querySelector('.arenas');
 const player1 = new Player(gamers[0]);
-arenas.appendChild(createPlayer(player1))
-
-arenas.appendChild(createPlayer(player2))
 const player2 = new Player(gamers[4]);
+arenas.appendChild(createPlayer(player1));
+arenas.appendChild(createPlayer(player2));
+console.log(player1.attack());
+console.log(player2.attack());
+
+
+
 
 
 // const player1 = {
