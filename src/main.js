@@ -3,7 +3,7 @@ import createPlayer from './js/createPlayer';
 import createElement from './js/createElement';
 
 import { playerAttack, enemyAttack } from './js/attack';
-import generateLogs from './js/generateLogs';
+
 
 import fighters from './assets/db.json';
 
@@ -31,18 +31,18 @@ function gameOver() {
   if (player1.hp < 0 && player2.hp > 0) {
     player1.hp = 0;
     arenas.appendChild(showResultText(player2.name));
-    generateLogs('end', player2, player1);
+
   }
   if (player1.hp > 0 && player2.hp < 0) {
     player2.hp = 0;
     arenas.appendChild(showResultText(player1.name));
-    generateLogs('end', player1, player2);
+
   }
   if (player1.hp < 0 && player2.hp < 0) {
     player1.hp = 0;
     player2.hp = 0;
     arenas.appendChild(showResultText());
-    generateLogs('draw', player1, player2);
+
   }
 }
 
@@ -61,7 +61,9 @@ formFight.addEventListener('submit', (event) => {
     randomButton.disabled = true;
     arenas.appendChild(createReloadButton());
     gameOver();
-  }player1.renderHP();player2.renderHP();
+  }
+  player1.renderHP();
+  player2.renderHP();
 });
 
 function createReloadButton() {
@@ -77,4 +79,4 @@ function createReloadButton() {
 
 arenas.appendChild(createPlayer(player2));
 arenas.appendChild(createPlayer(player1));
-generateLogs('start', player1, player2);
+
