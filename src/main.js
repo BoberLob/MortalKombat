@@ -14,7 +14,7 @@ const arenas = document.querySelector('.arenas');
 const formFight = document.querySelector('.control');
 
 
-function showResultText(name) {
+function showResult(name) {
   const winTitle = createElement('div', 'winTitle');
   if (name) {
     winTitle.innerHTML = `${name} win!`;
@@ -29,7 +29,7 @@ function showResultText(name) {
 function gameOver() {
   if (player1.hp < 0 && player2.hp > 0) {
     player1.hp = 0;
-    arenas.appendChild(showResultText(player2.name));
+    arenas.appendChild(showResult(player2.name));
     generateLogs('end', player2, player1);
   }
   if (player1.hp > 0 && player2.hp < 0) {
