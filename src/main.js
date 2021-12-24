@@ -20,7 +20,6 @@ function showResult(name) {
     winTitle.innerHTML = `${name} win!`;
   } else {
     winTitle.innerText = 'Nobody wins!';
-
   }
   createReloadButton()
   return winTitle;
@@ -34,13 +33,13 @@ function gameOver() {
   }
   if (player1.hp > 0 && player2.hp < 0) {
     player2.hp = 0;
-    arenas.appendChild(showResultText(player1.name));
+    arenas.appendChild(showResult(player1.name));
     generateLogs('end', player1, player2);
   }
   if (player1.hp < 0 && player2.hp < 0) {
     player1.hp = 0;
     player2.hp = 0;
-    arenas.appendChild(showResultText());
+    arenas.appendChild(showResult());
     generateLogs('draw', player1, player2);
   }
 }
@@ -51,17 +50,32 @@ formFight.addEventListener('submit', (event) => {
 
   const enemy = enemyAttack();
   const attack = playerAttack();
-  const damagePlayer1=enemy.hit===attack.defence ?0:enemy.value
-  const damagePlayer2=attack.hit===enemy.defence ?0:attack.value
-  let player1HP = player1.changeHP(damagePlayer1);
-  let player2HP = player2.changeHP(damagePlayer2);
+  let damagePlayer1 = 0;
+  let damagePlayer2 = 0;
 
-  if (player1HP === 0 || player2HP === 0) {
-    gameOver();
+
+  if (enemy.hit === attack.defence) {
+    generateLogs('defence', player2, player1, damagePlayer1);
+  } else {
+    damagePlayer1 = enemy.value;
+
+    player1.changeHP(damagePlayer1);
+    player1.renderHP();
+
+    generateLogs('hit', player2, player1, damagePlayer1);
   }
-  player1.renderHP();
-  player2.renderHP();
-});
+  if (attack.hit === enemy.defence) {
+    generateLogs('defence', player1, player2, damagePlayer1);
+  } else {
+    damagePlayer2 = attack.value;
+
+    player2.changeHP(damagePlayer2);
+    player2.renderHP();
+
+    generateLogs('hit', player1, player2, damagePlayer2);
+  }
+  gameOver();
+})
 
 function createReloadButton() {
   const reloadWrap = createElement('div', 'reloadWrap');
