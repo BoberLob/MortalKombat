@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'Mortal Kombat 3';
-    src: url('./assets/fonts/MortalKombat3-Regular.eot');
-    src: url('./assets/fonts/MortalKombat3-Regular.eot?#iefix') format('embedded-opentype'),
-    url('./assets/fonts/MortalKombat3-Regular.woff2') format('woff2'),
-    url('./assets/fonts/MortalKombat3-Regular.woff') format('woff'),
-    url('./assets/fonts/MortalKombat3-Regular.ttf') format('truetype');
+    src: url('./assets/font/MortalKombat3-Regular.eot');
+    src: url('./assets/font/MortalKombat3-Regular.eot?#iefix') format('embedded-opentype'),
+    url('./assets/font/MortalKombat3-Regular.woff2') format('woff2'),
+    url('./assets/font/MortalKombat3-Regular.woff') format('woff'),
+    url('./assets/font/MortalKombat3-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -41,7 +41,7 @@ body {
 .wall-left {
     position: absolute;
     width: 87px;
-    background: url(img/wall-left.png);
+    background: url(./img/wall-left.png);
     height: 100vh;
     background-size: contain;
     background-repeat: no-repeat;
@@ -150,7 +150,7 @@ body {
 
 .name {
     position: absolute;
-    font-family: 'Mortal Kombat 3';
+    font-family: 'Mortal Kombat 3', sans-serif;
     font-size: 26px;
     line-height: 20px;
     letter-spacing: 2px;

@@ -1,14 +1,13 @@
 export default class Player {
+    id;
     name;
     hp;
     img;
     weapon;
-    count;
     
     
-    constructor({ name, hp, img, weapon, player}) {
-        // увеличиваем счётчик при каждом вызове
-        this.count++ = player;
+    constructor({id, name, hp, img, weapon}) {
+        this.id = id;
         this.name = name;
         this.hp = hp;
         this.img = img;

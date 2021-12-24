@@ -2,7 +2,7 @@ import createElem from './createElem.js'
 
 export default function createPlayer(playerObj) {
     
-    const $player = createElem('div', 'player' + playerObj.player);
+    const $player = createElem('div', 'player' + playerObj.id);
     const $progressbar = createElem('div', 'progressbar');
     const $character = createElem('div', 'character');
     const $life = createElem('div', 'life');
