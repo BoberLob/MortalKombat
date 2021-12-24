@@ -5,10 +5,13 @@ import getRandom from './getRandom';
 const chat = document.querySelector('.chat');
 
 export default function generateLogs(type, player1, player2, damage = 0) {
-  let logType = LOGS[type];
   const time = getTime();
-  let logMessage = logType[getRandom(logType.length - 1)]
-  switch (logType) {
+
+  let logMessage =type.includes('start','draw')
+    ? LOGS[type]
+   :LOGS[getRandom(LOGS[type].length - 1)]
+  
+  switch (type) {
     case 'start':
       logMessage
         .replace('[time]', time)
