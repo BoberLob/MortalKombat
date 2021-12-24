@@ -10,7 +10,7 @@ export default function generateLogs(type, player1, player2, damage = 0) {
   let logMessage =type.includes('start','draw')
     ? LOGS[type]
    :LOGS[getRandom(LOGS[type].length - 1)]
-  
+
   switch (type) {
     case 'start':
       logMessage

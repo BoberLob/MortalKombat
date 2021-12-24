@@ -11,7 +11,6 @@ const player1 = new Player(fighters[0]);
 const player2 = new Player(fighters[4]);
 
 const arenas = document.querySelector('.arenas');
-const randomButton = document.querySelector('.button');
 const formFight = document.querySelector('.control');
 
 
@@ -23,7 +22,7 @@ function showResultText(name) {
     winTitle.innerText = 'Nobody wins!';
 
   }
-
+  createReloadButton()
   return winTitle;
 }
 
@@ -58,8 +57,6 @@ formFight.addEventListener('submit', (event) => {
   let player2HP = player2.changeHP(damagePlayer2);
 
   if (player1HP === 0 || player2HP === 0) {
-    randomButton.disabled = true;
-    arenas.appendChild(createReloadButton());
     gameOver();
   }
   player1.renderHP();
