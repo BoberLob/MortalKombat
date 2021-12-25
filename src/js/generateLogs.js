@@ -1,6 +1,6 @@
-import { LOGS } from './constans';
-import getTime from './getTime';
-import getRandom from './getRandom';
+import { LOGS } from './constans.js';
+import getTime from './getTime.js';
+import getRandom from './getRandom.js';
 
 const chat = document.querySelector('.chat');
 
