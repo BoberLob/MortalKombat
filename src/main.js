@@ -1,13 +1,13 @@
-import Player from './js/Player'
-import fighters from './assets/db.json'
-import createPlayer from './js/createPlayer'
-import createElem from './js/createElem'
-
-const $arenas = document.querySelector('.arenas');
+import Player from './js/Player.js'
+import obj from './assets/db.js'
+import createPlayer from './js/createPlayer.js'
+import createElem from './js/createElem.js'
+const {fighters} =obj
+const arenas = document.querySelector('.arenas');
 const randomButton = document.querySelector('.button');
 
 const player1 = new Player(fighters[0]);
-const player2 = new Player(fighters[4]);
+const player2 = new Player(fighters[1]);
 
 function playerWin(name) {
     const $winTitle = createElem('div', 'loseTitle');
@@ -37,8 +37,8 @@ const $playerLife = document.querySelector(`.player${this.id} .life`);
 return $playerLife.style.width = `${this.hp}%`;
 }
 
-function changeHP(hp) {
-    this.hp -= getRandom(hp);
+function changeHP(damage) {
+    this.hp -= getRandom(damage);
     if (this.hp <= 0) this.hp = 0;
     console.log(`###: ${this.name} = ${this.hp}%`)
     return this.hp
