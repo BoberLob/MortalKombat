@@ -1,10 +1,10 @@
-import Player from './js/Player';
-import createPlayer from './js/createPlayer';
-import createElement from './js/createElement';
-import getRandom from './js/getRandom';
+import Player from './js/Player.js';
+import createPlayer from './js/createPlayer.js';
+import createElement from './js/createElement.js';
+import getRandom from './js/getRandom.js';
 
-import fighters from './assets/db.json';
-
+import obj from './assets/db.js';
+const {fighters}=obj
 const arenas = document.querySelector('.arenas');
 const randomButton = document.querySelector('.button');
 
