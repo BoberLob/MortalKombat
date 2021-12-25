@@ -41,7 +41,7 @@ body {
 .wall-left {
     position: absolute;
     width: 87px;
-    background: url(./img/wall-left.png);
+    background-image: url(./img/wall-left.png);
     height: 100vh;
     background-size: contain;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@ body {
 .wall-right {
     position: absolute;
     width: 87px;
-    background: url(./img/wall-right.png);
+    background-image: url(./img/wall-right.png);
     height: 100vh;
     background-size: contain;
     background-repeat: no-repeat;

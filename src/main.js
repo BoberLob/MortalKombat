@@ -1,10 +1,10 @@
 import createPlayer from './js/createPlayer.js';
 import Player from './js/Player.js';
-import gamers from './assets/db.js';
-
+import obj from './assets/db.js';
+const {gamers}=obj
 const arenas = document.querySelector('.arenas');
 const player1 = new Player(gamers[0]);
-const player2 = new Player(gamers[4]);
+const player2 = new Player(gamers[1]);
 
 arenas.appendChild(createPlayer(player1));
 arenas.appendChild(createPlayer(player2));
