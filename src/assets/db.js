@@ -1,5 +1,5 @@
 export default {
-    gamers: [
+    fighters: [
         {
             id: 1,
             name: 'Scorpion',

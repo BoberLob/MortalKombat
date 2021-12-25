@@ -7,9 +7,9 @@ import obj from './assets/db.js';
 const {fighters}=obj
 const arenas = document.querySelector('.arenas');
 const randomButton = document.querySelector('.button');
-
+console.log(fighters[0])
 const player1 = new Player(fighters[0]);
-const player2 = new Player(fighters[4]);
+const player2 = new Player(fighters[1]);
 
 console.log(player1.attack());
 console.log(player2.attack());
