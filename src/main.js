@@ -5,8 +5,8 @@ import createElement from './js/createElement.js';
 import { playerAttack, enemyAttack } from './js/attack.js';
 import generateLogs from './js/generateLogs.js';
 
-import fighters from './assets/db.json';
-
+import obj from './assets/db.js';
+const {fighters}=obj
 const player1 = new Player(fighters[0]);
 const player2 = new Player(fighters[4]);
 
