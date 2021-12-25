@@ -1,4 +1,4 @@
-import Player from './Player.js';
+import Player from './js/Player.js';
 import createPlayer from './js/createPlayer.js';
 import createElement from './js/createElement.js';
 
