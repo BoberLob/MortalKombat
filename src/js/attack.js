@@ -1,15 +1,14 @@
-import getRandom from './getRandom.js';
+import {getRandom} from '../utils/index.js';
 import { ATTACK, HIT } from './constans.js';
-import Random from './getRandom.js';
 
 // Эта функция должна выбирать один из трех элементов из переменной ATTACK, которая рандомным способом при помощи функции `getRandom()` выбирает, куда мы будем бить, это записываем в переменную hit, и что будем защищать, это записываем в переменную defence.
 // Из функции надо вернуть объект с тремя полями, value (рандомно выбираем число жизней, на которое нанесем урон, используем для этого объект HIT), hit и defence
 const enemyAttack = () => {
   const length = ATTACK.length - 1;
-  const hit = ATTACK[Random(length)];
-  const defence = ATTACK[Random(length)];
+  const hit = ATTACK[getRandom(length)];
+  const defence = ATTACK[getRandom(length)];
   return {
-    value: Random(HIT[hit]),
+    value: getRandom(HIT[hit]),
     hit,
     defence,
 
