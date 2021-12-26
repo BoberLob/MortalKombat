@@ -1,11 +1,5 @@
 
 export default class Player {
-    id;
-    name;
-    hp;
-    img;
-    weapon;
-
     constructor({ id, name, hp, img, weapon }) {
         this.id = id;
         this.name = name;
