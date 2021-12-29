@@ -8,17 +8,16 @@ import { playerAttack, enemyAttack } from './js/attack.js';
 import obj from './assets/db.js';
 const {fighters}=obj
 const player1 = new Player(fighters[0]);
-const player2 = new Player(fighters[4]);
+const player2 = new Player(fighters[1]);
 
 const arenas = document.querySelector('.arenas');
 const randomButton = document.querySelector('.button');
 const formFight = document.querySelector('.control');
 
-
 function showResultText(name) {
   const winTitle = createElement('div', 'winTitle');
   if (name) {
-    winTitle.innerHTML = `${name} win!`;
+    winTitle.innerText = `${name} win!`;
   } else {
     winTitle.innerText = 'Nobody wins!';
 
@@ -28,30 +27,36 @@ function showResultText(name) {
 }
 
 function gameOver() {
-  if (player1.hp < 0 && player2.hp > 0) {
-    player1.hp = 0;
+  if (player2.hp > 0) {
     arenas.appendChild(showResultText(player2.name));
-
   }
-  if (player1.hp > 0 && player2.hp < 0) {
-    player2.hp = 0;
+  if (player1.hp > 0) {
     arenas.appendChild(showResultText(player1.name));
-
   }
-  if (player1.hp < 0 && player2.hp < 0) {
-    player1.hp = 0;
-    player2.hp = 0;
+  if (player1.hp === 0 && player2.hp === 0) {
     arenas.appendChild(showResultText());
-
   }
 }
+
+function createReloadButton() {
+  const reloadWrap = createElement('div', 'reloadWrap');
+  const reloadButton = createElement('button', 'button');
+  reloadButton.innerHTML = 'Restart';
+  reloadWrap.appendChild(reloadButton);
+  reloadButton.addEventListener('click', function() {
+    window.location.reload();
+  });
+  return reloadWrap;
+}
+
+
 
 formFight.addEventListener('submit', (event) => {
   console.log('####: Click Submit');
   event.preventDefault();
 
   const enemy = enemyAttack();
-  const attack = playerAttack();
+  const attack = playerAttack(formFight);
   const damagePlayer1=enemy.hit===attack.defence ?0:enemy.value
   const damagePlayer2=attack.hit===enemy.defence ?0:attack.value
   let player1HP = player1.changeHP(damagePlayer1);
@@ -66,17 +71,9 @@ formFight.addEventListener('submit', (event) => {
   player2.renderHP();
 });
 
-function createReloadButton() {
-  const reloadWrap = createElement('div', 'reloadWrap');
-  const reloadButton = createElement('button', 'button');
-  reloadButton.innerHTML = 'Restart';
-  reloadWrap.appendChild(reloadButton);
-  reloadButton.addEventListener('click', function() {
-    window.location.reload();
-  });
-  return reloadWrap;
-}
-
-arenas.appendChild(createPlayer(player2));
+console.log(createPlayer(player1))
 arenas.appendChild(createPlayer(player1));
+arenas.appendChild(createPlayer(player2));
+
+
 

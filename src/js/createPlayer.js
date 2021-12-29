@@ -1,6 +1,7 @@
 import createElement from './createElement.js'
 
 export default function createPlayer({ id, hp, name, img}) {
+console.log(id, hp, name, img)
 
     const player = createElement('div', 'player' + id);
     const lifeEl = createElement('div', 'life');

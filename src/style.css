@@ -242,7 +242,6 @@ body {
   text-transform: uppercase;
   background-color: #f5d100;
   border: none;
-  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
@@ -275,7 +274,7 @@ body {
 
 .winTitle {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   font-size: 36px;
   transform: translate(-50%, 0%);
@@ -415,7 +414,7 @@ form:invalid button[class="button"]:active::after {
 .control {
   position: absolute;
   width: 200px;
-  top: 60%;
+  top: 70%;
   left: 50%;
   display: flex;
   justify-content: flex-start;
