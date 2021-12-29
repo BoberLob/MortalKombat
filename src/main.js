@@ -11,8 +11,8 @@ const randomButton = document.querySelector('.button');
 const player1 = new Player(fighters[0]);
 const player2 = new Player(fighters[1]);
 
-console.log(player1.attack());
-console.log(player2.attack());
+player1.attack();
+player2.attack();
 
 function showResultText(name) {
   const winTitle = createElement('div', 'winTitle');
@@ -39,22 +39,9 @@ function gameOver() {
     player2.hp = 0;
     arenas.appendChild(showResultText());
   }
+
+
 }
-
-randomButton.addEventListener('click', () => {
-  console.log('####: Click Random Button');
-
-  let player1HP = player1.changeHP(getRandom(20));
-  player1.renderHP();
-  let player2HP = player2.changeHP(getRandom(20));
-  player2.renderHP();
-
-  if (player1HP === 0 || player2HP === 0) {
-    randomButton.disabled = true;
-    arenas.appendChild(createReloadButton());
-    gameOver();
-  }
-});
 
 function createReloadButton() {
   const reloadWrap = createElement('div', 'reloadWrap');
@@ -67,5 +54,21 @@ function createReloadButton() {
   return reloadWrap;
 }
 
-arenas.appendChild(createPlayer(player2));
+randomButton.addEventListener('click', () => {
+  console.log('####: Click Random Button');
+
+  player1.changeHP(getRandom(20));
+  player1.renderHP();
+  player2.changeHP(getRandom(20));
+  player2.renderHP();
+  gameOver();
+  if (player1.hp === 0 || player2.hp === 0){
+    randomButton.disabled = true;
+    arenas.appendChild(createReloadButton());
+  }
+
+});
+
+
 arenas.appendChild(createPlayer(player1));
+arenas.appendChild(createPlayer(player2));
