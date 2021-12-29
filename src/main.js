@@ -54,8 +54,8 @@ formFight.addEventListener('submit', (event) => {
 
   const enemy = enemyAttack();
   const attack = playerAttack(formFight);
-  const damagePlayer1=enemy.hit===attack.defence ?0:enemy.value
-  const damagePlayer2=attack.hit===enemy.defence ?0:attack.value
+  const damagePlayer1 = enemy.hit === attack.defence ? 0 : enemy.value;
+  const damagePlayer2 = attack.hit === enemy.defence ? 0 : attack.value;
   let player1HP = player1.changeHP(damagePlayer1);
   let player2HP = player2.changeHP(damagePlayer2);
 
