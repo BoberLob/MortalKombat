@@ -38,11 +38,9 @@ function gameOver() {
 }
 
 function createReloadButton() {
-  const reloadWrap = createElement('div', 'reloadWrap');
-  const reloadButton = createElement('button', 'button');
-  reloadButton.innerHTML = 'Restart';
-  reloadWrap.appendChild(reloadButton);
-  reloadButton.addEventListener('click', function () {
+  const reloadButton = createElement('button', 'button','Restart');
+  const reloadWrap = createElement('div', 'reloadWrap',[reloadButton]);
+  reloadButton.addEventListener('click', function() {
     window.location.reload();
   });
   return reloadWrap;
