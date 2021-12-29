@@ -49,13 +49,15 @@ function createReloadButton() {
 
 
 formFight.addEventListener('submit', (event) => {
-  console.log('####: Click Submit');
   event.preventDefault();
 
-  const enemy = enemyAttack();
   const attack = playerAttack(formFight);
+  const enemy = enemyAttack();
+  console.log(attack)
+  console.log(enemy)
   const damagePlayer1 = enemy.hit === attack.defence ? 0 : enemy.value;
   const damagePlayer2 = attack.hit === enemy.defence ? 0 : attack.value;
+
   let player1HP = player1.changeHP(damagePlayer1);
   let player2HP = player2.changeHP(damagePlayer2);
 
@@ -68,7 +70,6 @@ formFight.addEventListener('submit', (event) => {
   player2.renderHP();
 });
 
-console.log(createPlayer(player1))
 arenas.appendChild(createPlayer(player1));
 arenas.appendChild(createPlayer(player2));
 
