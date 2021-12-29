@@ -16,13 +16,12 @@ const formFight = document.querySelector('.control');
 
 function showResultText(name) {
   const winTitle = createElement('div', 'winTitle');
+
   if (name) {
     winTitle.innerText = `${name} win!`;
   } else {
     winTitle.innerText = 'Nobody wins!';
-
   }
-
   return winTitle;
 }
 
@@ -39,10 +38,8 @@ function gameOver() {
 }
 
 function createReloadButton() {
-  const reloadWrap = createElement('div', 'reloadWrap');
-  const reloadButton = createElement('button', 'button');
-  reloadButton.innerHTML = 'Restart';
-  reloadWrap.appendChild(reloadButton);
+  const reloadButton = createElement('button', 'button','Restart');
+  const reloadWrap = createElement('div', 'reloadWrap',[reloadButton]);
   reloadButton.addEventListener('click', function() {
     window.location.reload();
   });
