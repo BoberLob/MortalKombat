@@ -10,24 +10,20 @@ const player1 = new Player(fighters[0]);
 const player2 = new Player(fighters[1]);
 
 function playerWin(name) {
-    const $winTitle = createElem('div', 'loseTitle');
+    const $winTitle = createElem('div', 'winTitle');
     $winTitle.innerHTML = `${name} win!`;
     return $winTitle;
 }
 
 function gameOver() {
-    if (player1.hp < 0 && player2.hp > 0) {
-        player1.hp = 0;
+    if (player2.hp > 0) {
         arenas.appendChild(playerWin(player2.name));
     }
-    if (player1.hp > 0 && player2.hp < 0) {
-        player2.hp = 0;
+    if (player1.hp > 0) {
         arenas.appendChild(playerWin(player1.name));
     }
-    if (player1.hp < 0 && player2.hp < 0) {
-        let nobody = 'Nobody wins!';
-        player1.hp = 0;
-        player2.hp = 0;
+    if (player1.hp === 0 && player2.hp === 0) {
+        const nobody = 'Nobody';
         arenas.appendChild(playerWin(nobody));
     }
 }
@@ -44,32 +40,26 @@ function changeHP(damage) {
     return this.hp
 }
 
-// function changeHP(player) {
-//     const playerLife = document.querySelector(`.player${player.id} .life`);
-//     player.hp -= getRandom(20);
-//     playerLife.style.width = player.hp <= 0 ? `0%` : `${player.hp}%`;
-// }
-
 function getRandom(hp) {
     return Math.ceil(Math.random() * hp)
 }
 
 randomButton.addEventListener('click', () => {
    console.log("####: Click Random Button");
-    
+
   let player1HP = changeHP.call(player1,20);
        renderHP.call(player1)
   let player2HP = changeHP.call(player2,20);
        renderHP.call(player2)
-    
-        if (player1HP ===0 ||player2HP ===0 ) {
-        randomButton.disabled = true;    
-        gameOver();
+
+        if (player1HP === 0 || player2HP === 0 ) {
+        randomButton.disabled = true;
+          gameOver();
     }
 });
 
-arenas.appendChild(createPlayer(player2))
 arenas.appendChild(createPlayer(player1))
+arenas.appendChild(createPlayer(player2))
 
 // 1. Функция changeHP должна в аргументах принимать, на какое кол-во надо изменять HP. И решать, нужно ли отнимать или ставить 0. Больше ничего эта функция не должна делать.
 // поменять параметр
