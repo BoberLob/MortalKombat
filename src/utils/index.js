@@ -1,14 +1,23 @@
 /**
- * @param el, className
- * @param className
+ * @param {string, string} tag, className
+ * @param {string|array} content
  * @returns {HTMLElement} created
  */
-export function createElement(el, className) {
-  const tag = document.createElement(el);
+
+export default function createElement(tag = 'div', className, content) {
+  const el = document.createElement(tag);
   if (className) {
-    tag.classList.add(className);
+    el.classList.add(className);
   }
-  return tag;
+
+  if ( typeof content==='string'){
+    el.innerText = content;
+  }
+
+  if (Array.isArray(content)) {
+    content.forEach((item) => el.appendChild(item));
+  }
+  return el;
 }
 
 /**
