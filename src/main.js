@@ -26,21 +26,15 @@ function showResultText(name) {
 }
 
 function gameOver() {
-  if (player1.hp < 0 && player2.hp > 0) {
-    player1.hp = 0;
+  if (player2.hp > 0) {
     arenas.appendChild(showResultText(player2.name));
   }
-  if (player1.hp > 0 && player2.hp < 0) {
-    player2.hp = 0;
+  if (player1.hp >0) {
     arenas.appendChild(showResultText(player1.name));
   }
-  if (player1.hp < 0 && player2.hp < 0) {
-    player1.hp = 0;
-    player2.hp = 0;
+  if (player1.hp === 0 && player2.hp === 0) {
     arenas.appendChild(showResultText());
   }
-
-
 }
 
 function createReloadButton() {
@@ -61,9 +55,10 @@ randomButton.addEventListener('click', () => {
   player1.renderHP();
   player2.changeHP(getRandom(20));
   player2.renderHP();
-  gameOver();
+
   if (player1.hp === 0 || player2.hp === 0){
     randomButton.disabled = true;
+    gameOver();
     arenas.appendChild(createReloadButton());
   }
 
