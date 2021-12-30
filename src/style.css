@@ -180,6 +180,25 @@ body {
   background-size: cover;
   background-position: center;
   border-top: 4px solid #f5d100;
+    padding: 6px 40px;
+    overflow: scroll;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.chat img {
+  width: 20px;
+  height: 20px;
+}
+
+.chat .attacker {
+  color: #cd0e03;
+  font-weight: 700;
+}
+
+.chat .defender {
+  color: #198bf7;
+  font-weight: 700;
 }
 
 .character {
@@ -198,13 +217,15 @@ body {
 }
 
 .player2 .character img {
-  transform: scaleX(-1);
+    transform: scaleX(-1) translate(50%, 0);
 }
 
 .character img {
     height: 100%;
     position: absolute;
     bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .fight {
@@ -220,18 +241,6 @@ body {
   width: 100%;
 }
 
-.control {
-  position: absolute;
-  width: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
 .button {
   display: block;
   position: relative;
@@ -242,7 +251,7 @@ body {
   text-transform: uppercase;
   background-color: #f5d100;
   border: none;
-  margin-top: 150px;
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
@@ -272,10 +281,25 @@ body {
 .button:active::after {
   top: 1px;
 }
+.button:disabled {
+    opacity: .9;
+    cursor: not-allowed;
+}
 
+.button:disabled:after {
+    opacity: .1;
+}
+
+.button:disabled:active {
+    top: 0;
+}
+
+.button:disabled:active::after {
+    top: 4px;
+}
 .winTitle {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   font-size: 36px;
   transform: translate(-50%, 0%);
@@ -283,20 +307,160 @@ body {
   z-index: 1000;
   color: white;
   font-family: var(--main-font);
+  text-shadow: 2px 2px 2px #cd0e03;
+}
+.loseTitle {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    font-size: 36px;
+    transform: translate(-50%, 0%);
+    text-transform: uppercase;
+    z-index: 1000;
+    color: white;
+    font-family: var(--main-font);
+
 }
 
-.lkt {
+
+.reloadWrap {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  font-size: 36px;
-  text-align: center;
-  transform: translate(-50%, 0%);
-  text-transform: uppercase;
+  top: 10%;
   z-index: 1000;
-  color: white;
-  font-family: var(--main-font);
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
+
+.reloadWrap .button {
+  margin-top: 0;
+}
+
+form:invalid button[class="button"] {
+  opacity: 0.9;
+  cursor: not-allowed;
+}
+
+form:invalid button[class="button"]:after {
+  opacity: 0.1;
+}
+
+form:invalid button[class="button"]:active {
+  top: 0;
+}
+
+form:invalid button[class="button"]:active::after {
+  top: 4px;
+}
+
+.control {
+    position: absolute;
+    width: 200px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.inputWrap {
+  position: relative;
+  width: 280px;
+  margin-bottom: 24px;
+}
+
+.buttonWrap {
+  margin-top: 12px;
+}
+
+.inputWrap h2 {
+  text-align: center;
+  margin: 0 auto 20px;
+  font-weight: 700;
+  font-family: var(--main-font);
+  color: #efefef;
+  text-transform: uppercase;
+}
+
+.ul {
+  border: solid 3px #cd0e03;
+  height: 50px;
+  padding: 0 12px;
+  font-family: var(--main-font);
+  display: flex;
+  justify-content: space-between;
+  color: #efefef;
+}
+.ul label {
+  cursor: pointer;
+}
+.ul label:nth-of-type(2) {
+  margin: 0 -4.5px;
+}
+.ul label span {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 50px;
+  line-height: 50px;
+  transition: 0.3s;
+  text-align: center;
+  margin-top: -3px;
+}
+.ul label span::before {
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 50px;
+  content: "";
+  transform: scaleY(1.2);
+  z-index: -1;
+  margin-bottom: -50px;
+  transition: 0.3s;
+}
+.ul label span:hover {
+  background-color: rgba(107, 185, 240, 0.2);
+}
+
+input {
+  display: none;
+}
+input[type="radio"]:checked + label > span {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+input[type="radio"]:checked + label > span::before {
+  background: #f5d100;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+input[type="radio"]:checked + label > span:hover {
+  background: none;
+}
+
+
+.hp {
+  font-weight: 700;
+}
+
+.hp.green {
+  color: #0ff10f;
+}
+
+.hp.yellow {
+  color: #ffff00;
+}
+
+.hp.orange {
+  color: #ffa500;
+}
+
+.hp.red {
+  color: #cd0e03;
+}
+
 .fade {
   -webkit-animation: fade 2s;
   -moz-animation: fade 2s;
@@ -382,164 +546,4 @@ body {
   .name {
     font-size: 18px;
   }
-}
-.reloadWrap {
-  position: absolute;
-  top: 10%;
-  z-index: 1000;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
-
-.reloadWrap .button {
-  margin-top: 0;
-}
-
-form:invalid button[class="button"] {
-  opacity: 0.9;
-  cursor: not-allowed;
-}
-
-form:invalid button[class="button"]:after {
-  opacity: 0.1;
-}
-
-form:invalid button[class="button"]:active {
-  top: 0;
-}
-
-form:invalid button[class="button"]:active::after {
-  top: 4px;
-}
-
-.control {
-  position: absolute;
-  width: 200px;
-  top: 60%;
-  left: 50%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1000;
-  /*opacity: 0;*/
-  /*transform: translate(-50%, -50%) scale(0);*/
-  /*visibility: hidden;*/
-  /*transition: all 0.4s ease-out 0s;*/
-}
-
-/*.control.shown {*/
-/*  transform: translate(-50%, -50%) scale(1);*/
-/*  opacity: 1;*/
-/*  visibility: visible;*/
-/*}*/
-
-.inputWrap {
-  position: relative;
-  width: 280px;
-  margin-bottom: 24px;
-}
-
-.buttonWrap {
-  margin-top: 12px;
-}
-
-.inputWrap h2 {
-  text-align: center;
-  margin: 0 auto 20px;
-  font-weight: 700;
-  font-family: var(--main-font);
-  color: #efefef;
-  text-transform: uppercase;
-}
-
-.ul {
-  border: solid 3px #cd0e03;
-  height: 50px;
-  padding: 0 12px;
-  font-family: var(--main-font);
-  display: flex;
-  justify-content: space-between;
-  color: #efefef;
-}
-.ul label {
-  cursor: pointer;
-}
-.ul label:nth-of-type(2) {
-  margin: 0 -4.5px;
-}
-.ul label span {
-  position: relative;
-  display: inline-block;
-  width: 80px;
-  height: 50px;
-  line-height: 50px;
-  transition: 0.3s;
-  text-align: center;
-  margin-top: -3px;
-}
-.ul label span::before {
-  position: relative;
-  display: block;
-  width: 80px;
-  height: 50px;
-  content: "";
-  transform: scaleY(1.2);
-  z-index: -1;
-  margin-bottom: -50px;
-  transition: 0.3s;
-}
-.ul label span:hover {
-  background-color: rgba(107, 185, 240, 0.2);
-}
-
-input {
-  display: none;
-}
-input[type="radio"]:checked + label > span {
-  color: #fff;
-  font-weight: 700;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-input[type="radio"]:checked + label > span::before {
-  background: #f5d100;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-}
-input[type="radio"]:checked + label > span:hover {
-  background: none;
-}
-
-.chat img {
-  width: 20px;
-  height: 20px;
-}
-
-.chat .attacker {
-  color: #cd0e03;
-  font-weight: 700;
-}
-
-.chat .defender {
-  color: #198bf7;
-  font-weight: 700;
-}
-
-.hp {
-  font-weight: 700;
-}
-
-.hp.green {
-  color: #0ff10f;
-}
-
-.hp.yellow {
-  color: #ffff00;
-}
-
-.hp.orange {
-  color: #ffa500;
-}
-
-.hp.red {
-  color: #cd0e03;
 }
