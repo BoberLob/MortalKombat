@@ -6,7 +6,7 @@ import { playerAttack, enemyAttack } from './js/attack.js';
 import generateLogs from './js/generateLogs.js';
 import obj from './assets/db.js';
 
-const {fighters}=obj
+const { fighters } = obj;
 const player1 = new Player(fighters[0]);
 const player2 = new Player(fighters[1]);
 
@@ -22,7 +22,7 @@ function showResult(name) {
   } else {
     winTitle.innerText = 'Nobody wins!';
   }
-  createReloadButton()
+  createReloadButton();
   return winTitle;
 }
 
@@ -42,7 +42,7 @@ function gameOver() {
     generateLogs('end', player2, player1);
   }
 
-  if (player1.hp > 0 ) {
+  if (player1.hp > 0) {
     arenas.appendChild(showResult(player1.name));
     generateLogs('end', player1, player2);
   }
@@ -60,20 +60,20 @@ formFight.addEventListener('submit', (event) => {
   const enemy = enemyAttack();
   const attack = playerAttack(formFight);
 
-  console.log(attack)
-  console.log(enemy)
+  console.log(attack);
+  console.log(enemy);
 
   let damagePlayer1 = 0;
   let damagePlayer2 = 0;
-  let player1HP =100
-  let player2HP =100
+  let player1HP = 100;
+  let player2HP = 100;
 
   if (enemy.hit === attack.defence) {
     generateLogs('defence', player2, player1, damagePlayer1);
   } else {
     damagePlayer1 = enemy.value;
 
-    player1HP =player1.changeHP(damagePlayer1);
+    player1HP = player1.changeHP(damagePlayer1);
     player1.renderHP();
 
     generateLogs('hit', player2, player1, damagePlayer1);
@@ -84,7 +84,7 @@ formFight.addEventListener('submit', (event) => {
   } else {
     damagePlayer2 = attack.value;
 
-    player2HP =player2.changeHP(damagePlayer2);
+    player2HP = player2.changeHP(damagePlayer2);
     player2.renderHP();
 
     generateLogs('hit', player1, player2, damagePlayer2);
@@ -95,8 +95,7 @@ formFight.addEventListener('submit', (event) => {
     arenas.appendChild(createReloadButton());
     gameOver();
   }
-})
-
+});
 
 
 arenas.appendChild(createPlayer(player1));
