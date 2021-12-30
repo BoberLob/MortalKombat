@@ -46,8 +46,8 @@ function gameOver() {
     arenas.appendChild(showResult(player1.name));
     generateLogs('end', player1, player2);
   }
-  if (player1.hp === 0 && player2.hp === 0) {
 
+  if (player1.hp === 0 && player2.hp === 0) {
     arenas.appendChild(showResult());
     generateLogs('draw', player1, player2);
   }

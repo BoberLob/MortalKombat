@@ -9,7 +9,7 @@ export default function generateLogs(type, player1, player2, damage = 0) {
 
   const log =type.includes('start','draw')
     ? LOGS[type]
-   :LOGS[getRandom(LOGS[type].length - 1)]
+   :LOGS[type][getRandom(LOGS[type].length - 1)]
   let logMessage;
   switch (type) {
     case 'start':
@@ -20,7 +20,7 @@ export default function generateLogs(type, player1, player2, damage = 0) {
       break;
     case 'end':
       logMessage = `${time} - ${log}`
-        .replace('[playerWin]', player1.name)
+        .replace('[playerWins]', player1.name)
         .replace('[playerLose]', player2.name);
       break;
     case 'hit':
@@ -40,5 +40,6 @@ export default function generateLogs(type, player1, player2, damage = 0) {
       return logMessage = '';
 
   }
+  console.log(type, player1.name, player2.name, logMessage)
   chat.insertAdjacentHTML('afterbegin', `<p>${logMessage}<p>`);
 }
