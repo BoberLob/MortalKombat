@@ -7,13 +7,13 @@ const chat = document.querySelector('.chat');
 export default function generateLogs(type, player1, player2, damage = 0) {
   const time = getTime();
 
-  const log =type.includes('start','draw')
+  const log = type.includes('start', 'draw')
     ? LOGS[type]
-   :LOGS[type][getRandom(LOGS[type].length - 1)]
+    : LOGS[type][getRandom(LOGS[type].length - 1)];
   let logMessage;
   switch (type) {
     case 'start':
-      logMessage =log
+      logMessage = log
         .replace('[time]', `${time}`)
         .replace('[player1]', player1.name)
         .replace('[player2]', player2.name);
@@ -40,6 +40,6 @@ export default function generateLogs(type, player1, player2, damage = 0) {
       return logMessage = '';
 
   }
-  console.log(type, player1.name, player2.name, logMessage)
+  console.log(type, player1.name, player2.name, logMessage);
   chat.insertAdjacentHTML('afterbegin', `<p>${logMessage}<p>`);
 }
