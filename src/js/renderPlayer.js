@@ -1,6 +1,6 @@
 import { createElement } from '../utils/index.js'
 
-export default function createPlayer({ id, hp, name, img}) {
+export default function renderPlayer({ id, hp, name, img}) {
 
     const player = createElement('div', 'player' + id);
     const lifeEl = createElement('div', 'life');
