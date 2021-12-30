@@ -1,10 +1,11 @@
-/**
- * @param {string, string} tag, className
- * @param {string|array} content
- * @returns {HTMLElement} created
- */
 
-export default function createElement(tag = 'div', className, content) {
+/**
+ * @param {string} tag
+ * @param {string} className
+ * @param {string|array} content
+ * @returns {HTMLDivElement}
+ */
+export  function createElement(tag = 'div', className, content) {
   const el = document.createElement(tag);
   if (className) {
     el.classList.add(className);

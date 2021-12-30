@@ -1,6 +1,6 @@
 import Player from './js/Player.js';
 import createPlayer from './js/createPlayer.js';
-import { createElement } from './utils/index.js';
+import { createElement } from './utils';
 import generateLogs from './js/generateLogs.js';
 
 import obj from './assets/db.js';
@@ -62,35 +62,48 @@ const init = () => {
     event.preventDefault();
 
     const enemy = enemyAttack();
-    const attack = playerAttack();
+    const attack = playerAttack(formFight);
+
+    console.log(attack);
+    console.log(enemy);
+
     let damagePlayer1 = 0;
     let damagePlayer2 = 0;
-
+    let player1HP = 100;
+    let player2HP = 100;
 
     if (enemy.hit === attack.defence) {
       generateLogs('defence', player2, player1, damagePlayer1);
     } else {
       damagePlayer1 = enemy.value;
 
-      player1.changeHP(damagePlayer1);
+      player1HP = player1.changeHP(damagePlayer1);
       player1.renderHP();
 
       generateLogs('hit', player2, player1, damagePlayer1);
     }
+
     if (attack.hit === enemy.defence) {
       generateLogs('defence', player1, player2, damagePlayer1);
     } else {
       damagePlayer2 = attack.value;
 
-      player2.changeHP(damagePlayer2);
+      player2HP = player2.changeHP(damagePlayer2);
       player2.renderHP();
 
       generateLogs('hit', player1, player2, damagePlayer2);
     }
-    gameOver();
+
+    if (player1HP === 0 || player2HP === 0) {
+      randomButton.disabled = true;
+      arenas.appendChild(createReloadButton());
+      gameOver();
+    }
   });
-  arenas.appendChild(createPlayer(player2));
+
+
   arenas.appendChild(createPlayer(player1));
+  arenas.appendChild(createPlayer(player2));
   generateLogs('start', player1, player2);
 };
 init();
