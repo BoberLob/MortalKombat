@@ -2,7 +2,7 @@ import Player from './js/Player.js';
 import createPlayer from './js/createPlayer.js';
 import { createElement } from './utils';
 import generateLogs from './js/generateLogs.js';
-
+import { playerAttack, enemyAttack } from './js/attack.js';
 import obj from './assets/db.js';
 
 const { fighters } = obj;
@@ -10,8 +10,8 @@ const player1 = new Player(fighters[0]);
 const player2 = new Player(fighters[1]);
 
 const arenas = document.querySelector('.arenas');
+const randomButton = document.querySelector('.button');
 const formFight = document.querySelector('.control');
-
 
 function showResult(name) {
   const winTitle = createElement('div', 'winTitle');
@@ -24,41 +24,35 @@ function showResult(name) {
   return winTitle;
 }
 
-function gameOver() {
-  if (player1.hp < 0 && player2.hp > 0) {
-    player1.hp = 0;
-    arenas.appendChild(showResult(player2.name));
-    generateLogs('end', player2, player1);
-  }
-  if (player1.hp > 0 && player2.hp < 0) {
-    player2.hp = 0;
-    arenas.appendChild(showResult(player1.name));
-    generateLogs('end', player1, player2);
-  }
-  if (player1.hp < 0 && player2.hp < 0) {
-    player1.hp = 0;
-    player2.hp = 0;
-    arenas.appendChild(showResult());
-    generateLogs('draw', player1, player2);
-  }
-}
-
-
 function createReloadButton() {
-  const reloadWrap = createElement('div', 'reloadWrap');
-  const reloadButton = createElement('button', 'button');
-  reloadButton.innerHTML = 'Restart';
-  reloadWrap.appendChild(reloadButton);
+  const reloadButton = createElement('button', 'button', 'Restart');
+  const reloadWrap = createElement('div', 'reloadWrap', [reloadButton]);
+
   reloadButton.addEventListener('click', function() {
     window.location.reload();
   });
   return reloadWrap;
 }
 
+function gameOver() {
+  if (player2.hp > 0) {
+    arenas.appendChild(showResult(player2.name));
+    generateLogs('end', player2, player1);
+  }
+
+  if (player1.hp > 0) {
+    arenas.appendChild(showResult(player1.name));
+    generateLogs('end', player1, player2);
+  }
+
+  if (player1.hp === 0 && player2.hp === 0) {
+    arenas.appendChild(showResult());
+    generateLogs('draw', player1, player2);
+  }
+}
 
 const init = () => {
   formFight.addEventListener('submit', (event) => {
-    console.log('####: Click Submit');
     event.preventDefault();
 
     const enemy = enemyAttack();
@@ -101,9 +95,9 @@ const init = () => {
     }
   });
 
-
   arenas.appendChild(createPlayer(player1));
   arenas.appendChild(createPlayer(player2));
   generateLogs('start', player1, player2);
 };
+
 init();

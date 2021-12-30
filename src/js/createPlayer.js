@@ -1,4 +1,4 @@
-import createElement from '../utils/index.js'
+import { createElement } from '../utils/index.js'
 
 export default function createPlayer({ id, hp, name, img}) {
 

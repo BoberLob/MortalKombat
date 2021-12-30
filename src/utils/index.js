@@ -3,7 +3,7 @@
  * @param {string} tag
  * @param {string} className
  * @param {string|array} content
- * @returns {HTMLDivElement}
+ * @returns {HTMLDivElement} create
  */
 export  function createElement(tag = 'div', className, content) {
   const el = document.createElement(tag);
