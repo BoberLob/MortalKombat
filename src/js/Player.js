@@ -1,31 +1,50 @@
+import obj from '../assets/db.js';
 
-export default class Player {
-    constructor({ id, name, hp, img }) {
-        this.id = id;
+const { fighters } = obj;
+
+class Player {
+    constructor({ player, name, hp, img }) {
+        this.player = player;
         this.name = name;
         this.hp = hp;
         this.img = img;
     }
 
-    elHP() {
-        return document.querySelector(`.player${this.id} .life`);
-    }
-
-    // Третья функци renderHP должна только рендерить hp, т.е. рисовать hp при помощи style.width.
-    renderHP() {
-        return this.elHP().style.width = `${this.hp}%`;
-    }
-
-// Функция changeHP должна в аргументах принимать, на какое кол-во надо изменять HP.
-// И решать, нужно ли отнимать или ставить 0. Больше ничего эта функция не должна делать.
-// поменять параметр и убедиться, что функция в объекте (по this имеет доступ к инстансу)
-    changeHP(damage) {
-        this.hp -= damage;
-        if (this.hp <= 0) this.hp = 0;
-        console.log(`###: ${this.name} = ${this.hp}%`);
-        return this.hp;
-    }
-
-
+    elHP = () => document.querySelector('.player' + this.player + ' .life');
+    changeHP = (damage) => {
+        if (this.hp < damage) {
+            this.hp = 0;
+        } else {
+            this.hp -= damage;
+        }
+    };
+    renderHP = () => this.elHP().style.width = this.hp + '%';
 }
+
+
+ const   getRandomPlayers = async () => {
+        const body =await fetch('https://reactmarathon-api.herokuapp.com/api/mk/player/choose')
+          .then(res => res.json())
+          .catch(err => console.log(err));
+        return body;
+    }
+
+        // const pla1 = JSON.parse(localStorage.getItem('player1'));
+
+        const p1 =fighters[0]
+        const p2 =await getRandomPlayers();
+
+export let player1 = new Player({
+            ...p1,
+            player: 1,
+            rootSelector: 'arenas',
+        });
+
+export let player2 = new Player({
+            ...p2,
+            player: 2,
+            rootSelector: 'arenas',
+        });
+
+
 

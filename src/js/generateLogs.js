@@ -1,15 +1,24 @@
 import { LOGS } from './constans.js';
-import {getTime, getRandom} from '../utils/index.js';
+import { getTime, getRandom } from '../utils/index.js';
+import { chat } from './domHelpers.js';
 
-const chat = document.querySelector('.chat');
+let logMessage;
+/**
+ *
+ * @param type
+ * @param player1
+ * @param player2
+ * @param damage
+ * @returns {string}
+ */
+export const generateLogs = (type, player1, player2, damage = 0) => {
 
-export default function generateLogs(type, player1, player2, damage = 0) {
   const time = getTime();
 
   const log = type.includes('start', 'draw')
     ? LOGS[type]
     : LOGS[type][getRandom(LOGS[type].length - 1)];
-  let logMessage;
+
   switch (type) {
     case 'start':
       logMessage = log
@@ -39,6 +48,6 @@ export default function generateLogs(type, player1, player2, damage = 0) {
       return logMessage = '';
 
   }
-  console.log(type, player1.name, player2.name, logMessage);
+
   chat.insertAdjacentHTML('afterbegin', `<p>${logMessage}<p>`);
-}
+};

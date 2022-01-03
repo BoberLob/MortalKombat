@@ -1,20 +1,15 @@
-import Player from './js/Player.js';
-import renderPlayer from './js/renderPlayer.js';
+import {player1,player2} from './js/Player.js';
+import {arenas, formFight} from './js/domHelpers.js';
+import { renderPlayer } from './js/renderPlayer.js';
 
-import generateLogs from './js/generateLogs.js';
+import {generateLogs} from './js/generateLogs.js';
 import { playerAttack, enemyAttack } from './js/attack.js';
 
-import gameOver from './js/resultGame.js';
+import {resultGame} from './js/resultGame.js';
 
-import obj from './assets/db.js';
 
-const { fighters } = obj;
-const player1 = new Player(fighters[0]);
-const player2 = new Player(fighters[1]);
 
-const arenas = document.querySelector('.arenas');
 
-const formFight = document.querySelector('.control');
 
 
 
@@ -52,7 +47,7 @@ const init = () => {
 
       generateLogs('hit', player1, player2, damagePlayer2);
     }
-      gameOver(arenas, player1, player2);
+    resultGame(arenas, player1, player2);
 
   });
 

@@ -1,8 +1,8 @@
-import { createElement } from '../utils/index.js'
+import { createElement } from './domHelpers.js'
 
-export default function renderPlayer({ id, hp, name, img}) {
+export const  renderPlayer=({ hp, img, name,  player })=> {
 
-    const player = createElement('div', 'player' + id);
+    const playerEl = createElement('div', 'player' + player);
     const lifeEl = createElement('div', 'life');
     const nameEl = createElement('div', 'name', name);
     const imgEl = createElement('img');
@@ -13,8 +13,8 @@ export default function renderPlayer({ id, hp, name, img}) {
     const progressbar = createElement('div', 'progressbar',[lifeEl, nameEl]);
     const character = createElement('div', 'character', [imgEl]);
 
-    player.appendChild(progressbar);
-    player.appendChild(character);
+    playerEl.appendChild(progressbar);
+    playerEl.appendChild(character);
     
-   return player;
+   return playerEl;
 };
