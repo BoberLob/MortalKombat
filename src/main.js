@@ -1,20 +1,11 @@
-import {player1,player2} from './js/Player.js';
-import {arenas, formFight} from './js/domHelpers.js';
-import { renderPlayer } from './js/renderPlayer.js';
-
-import {generateLogs} from './js/generateLogs.js';
+import { player1, player2 } from './js/Game.js';
+import { arenas, formFight } from './js/domHelpers.js';
+import { generateLogs } from './js/generateLogs.js';
 import { playerAttack, enemyAttack } from './js/attack.js';
-
-import {resultGame} from './js/resultGame.js';
-
-
-
-
-
-
+import { resultGame } from './js/resultGame.js';
 
 const init = () => {
-  formFight.addEventListener('submit', (event) => {
+  formFight.addEventListener('submit', event => {
     event.preventDefault();
 
     const enemy = enemyAttack();
@@ -48,11 +39,7 @@ const init = () => {
       generateLogs('hit', player1, player2, damagePlayer2);
     }
     resultGame(arenas, player1, player2);
-
   });
-
-  arenas.appendChild(renderPlayer(player1));
-  arenas.appendChild(renderPlayer(player2));
   generateLogs('start', player1, player2);
 };
 

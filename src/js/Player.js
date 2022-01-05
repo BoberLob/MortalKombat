@@ -1,50 +1,46 @@
-import obj from '../assets/db.js';
-
-const { fighters } = obj;
+import { appendChild, createElement } from './domHelpers.js';
+import { getLifeBarColor } from './utils.js';
 
 class Player {
-    constructor({ player, name, hp, img }) {
-        this.player = player;
-        this.name = name;
-        this.hp = hp;
-        this.img = img;
-    }
+  constructor({ player, name, hp, img, rootSelector }) {
+    this.player = player;
+    this.name = name;
+    this.hp = hp;
+    this.img = img;
+    this.rootSelector = document.querySelector(rootSelector);
+  }
 
-    elHP = () => document.querySelector('.player' + this.player + ' .life');
-    changeHP = (damage) => {
-        if (this.hp < damage) {
-            this.hp = 0;
-        } else {
-            this.hp -= damage;
-        }
-    };
-    renderHP = () => this.elHP().style.width = this.hp + '%';
+  renderPlayer = () => {
+    const playerEl = createElement('div', 'player' + this.player);
+    const lifeEl = createElement('div', 'life');
+    const nameEl = createElement('div', 'name', this.name);
+    const imgEl = createElement('img');
+
+    lifeEl.style.width = this.hp + '%';
+    imgEl.src = this.img;
+
+    const progressbar = createElement('div', 'progressbar', [lifeEl, nameEl]);
+    const character = createElement('div', 'character', [imgEl]);
+
+    appendChild(playerEl, progressbar);
+    appendChild(playerEl, character);
+
+    return appendChild(this.rootSelector, playerEl);
+  };
+
+  elHP = () => document.querySelector('.player' + this.player + ' .life');
+
+  changeHP = damage => {
+    if (this.hp < damage) {
+      this.hp = 0;
+    } else {
+      this.hp -= damage;
+    }
+  };
+  renderHP = () => {
+    this.elHP().style.width = this.hp + '%';
+    this.elHP().style.background = getLifeBarColor(this.hp);
+  };
 }
 
-
- const   getRandomPlayers = async () => {
-        const body =await fetch('https://reactmarathon-api.herokuapp.com/api/mk/player/choose')
-          .then(res => res.json())
-          .catch(err => console.log(err));
-        return body;
-    }
-
-        // const pla1 = JSON.parse(localStorage.getItem('player1'));
-
-        const p1 =fighters[0]
-        const p2 =await getRandomPlayers();
-
-export let player1 = new Player({
-            ...p1,
-            player: 1,
-            rootSelector: 'arenas',
-        });
-
-export let player2 = new Player({
-            ...p2,
-            player: 2,
-            rootSelector: 'arenas',
-        });
-
-
-
+export default Player;

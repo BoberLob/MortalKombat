@@ -9,7 +9,7 @@ export const getRandom = number => Math.ceil(Math.random() * number);
  * @returns {string|*} '01'...'09' or time
  */
 
-export const generateTimeString = time => time < 10 ? `0${time}` : time;
+export const generateTimeString = time => (time < 10 ? `0${time}` : time);
 
 /**
  * @returns {string} time in format HH:MM:SS
@@ -20,7 +20,9 @@ export const getTime = () => {
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
 
-  return `${generateTimeString(hours)}:${generateTimeString(minutes)}:${generateTimeString(seconds)}`;
+  return `${generateTimeString(hours)}:${generateTimeString(
+    minutes,
+  )}:${generateTimeString(seconds)}`;
 };
 
 /**
@@ -34,26 +36,21 @@ let color = '';
 /**
  *
  * @param hp
- * @returns {string}
+ * @returns {string} css color
  */
-export const getLifeBarColor = hp => {
 
+export const getLifeBarColor = hp => {
   switch (!!hp) {
     case hp >= 75:
-      color = 'green';
-      break;
+      return (color = 'green');
+
     case hp >= 50 && hp <= 74:
-      color = 'yellow';
-      break;
+      return (color = 'yellow');
+
     case hp >= 25 && hp <= 49:
-      color = 'orange';
-      break;
-    case hp <= 24:
-      color = 'red';
-      break;
+      return (color = 'orange');
+
     default:
-      color = 'red';
-      break;
+      return (color = 'red');
   }
-  return color;
 };

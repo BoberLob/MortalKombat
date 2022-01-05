@@ -1,4 +1,4 @@
-import {getRandom} from '../utils/index.js';
+import { getRandom } from './utils.js';
 import { ATTACK, HIT } from './constans.js';
 
 // Эта функция должна выбирать один из трех элементов из переменной ATTACK, которая рандомным способом при помощи функции `getRandom()` выбирает, куда мы будем бить, это записываем в переменную hit, и что будем защищать, это записываем в переменную defence.
@@ -11,11 +11,10 @@ const enemyAttack = () => {
     value: getRandom(HIT[hit]),
     hit,
     defence,
-
   };
 };
 
-const playerAttack = (formFight) => {
+const playerAttack = formFight => {
   const attack = {
     value: 0,
     hit: '',

@@ -1,5 +1,5 @@
 import { LOGS } from './constans.js';
-import { getTime, getRandom } from '../utils/index.js';
+import { getTime, getRandom } from './utils.js';
 import { chat } from './domHelpers.js';
 
 let logMessage;
@@ -12,7 +12,6 @@ let logMessage;
  * @returns {string}
  */
 export const generateLogs = (type, player1, player2, damage = 0) => {
-
   const time = getTime();
 
   const log = type.includes('start', 'draw')
@@ -45,8 +44,7 @@ export const generateLogs = (type, player1, player2, damage = 0) => {
       logMessage = `${time} - ${log}`;
       break;
     default:
-      return logMessage = '';
-
+      return (logMessage = '');
   }
 
   chat.insertAdjacentHTML('afterbegin', `<p>${logMessage}<p>`);
