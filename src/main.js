@@ -29,7 +29,7 @@ function gameOver() {
   if (player2.hp > 0) {
     arenas.appendChild(showResultText(player2.name));
   }
-  if (player1.hp >0) {
+  if (player1.hp > 0) {
     arenas.appendChild(showResultText(player1.name));
   }
   if (player1.hp === 0 && player2.hp === 0) {
